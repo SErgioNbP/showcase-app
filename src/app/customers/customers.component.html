@@ -1,12 +1,12 @@
 <h2>Customers Showcase</h2>
-
 <ul class="customers">
   <li *ngFor="let customer of customers">
-    <button [class.selected]="customer === selectedCustomer" type="button" (click)="onSelect(customer)">
-      <span class="badge">{{customer.id}}</span>
-      <span class="name">{{customer.name}}</span>
-    </button>
+    <!-- <button [class.selected]="customer === selectedCustomer" 
+            type="button" 
+            (click)="onSelect(customer)"></button> -->
+      <a routerLink="/detail/{{ customer.id }}"></a>
+      <span class="badge">{{ customer.id }}</span> {{ customer.name }}
   </li>
 </ul>
 
-<app-hero-detail [hero]="selectedHero"></app-hero-detail>
+<!-- <app-customer-detail [customer]="selectedCustomer"></app-customer-detail> -->

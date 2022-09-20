@@ -18,4 +18,10 @@ export class CustomerService {
     this.messageService.add('CustomerService: fetched customers');
     return customers;
   }
+
+  getCustomer(id: number): Observable<Customer> {
+    const customer = CUSTOMERS.find(c => c.id === id)!;
+    this.messageService.add(`CustomerService: fetched customer id=${id}`);
+    return of(customer);
+  }
 }
