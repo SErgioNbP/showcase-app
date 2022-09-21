@@ -1,9 +1,9 @@
 import { Component, OnInit, } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+import { ActivatedRoute, } from '@angular/router';
+import { Location, } from '@angular/common';
 
 import { Customer, } from '../customer';
-import { CustomerService } from '../customer.service';
+import { CustomerService, } from '../customer.service';
 
 @Component({
   selector: 'app-customer-detail',
@@ -25,12 +25,19 @@ export class CustomerDetailComponent implements OnInit {
   }
 
   getCustomer(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
+    const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
     this.customerService.getCustomer(id)
       .subscribe(customer => this.customer = customer);
   }
 
   goBack(): void {
     this.location.back();
+  }
+
+  save(): void {
+    if (this.customer) {
+      this.customerService.updateCustomer(this.customer)
+        .subscribe(() => this.goBack());
+    }
   }
 }

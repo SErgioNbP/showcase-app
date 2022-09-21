@@ -18,12 +18,22 @@ export class CustomersComponent implements OnInit {
     this.getCustomers();
   }
 
-  /* onSelect(customer: Customer): void {
-    this.selectedCustomer = customer;
-  } */
-
   getCustomers(): void {
     this.CustomerService?.getCustomers()
-        ?.subscribe(customers => this.customers = customers);
+      ?.subscribe(customers => this.customers = customers);
+  }
+
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.CustomerService.addCustomer({ name } as Customer)
+      .subscribe(customer => {
+        this.customers.push(customer);
+      });
+  }
+
+  delete(customer: Customer): void {
+    this.customers = this.customers.filter(h => h !== customer);
+    this.CustomerService.deleteCustomer(customer.id).subscribe();
   }
 }

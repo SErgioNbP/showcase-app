@@ -1,12 +1,26 @@
 <h2>Customers Showcase</h2>
+
+<div>
+  <label for="new-customer">Customer name: </label>
+  <input id="new-customer" #customerName />
+
+  <button type="button" 
+          class="add-button" 
+          (click)="add(customerName.value); customerName.value=''">
+    Add customer
+  </button>
+</div>
+
 <ul class="customers">
   <li *ngFor="let customer of customers">
-    <!-- <button [class.selected]="customer === selectedCustomer" 
-            type="button" 
-            (click)="onSelect(customer)"></button> -->
-      <a routerLink="/detail/{{ customer.id }}"></a>
-      <span class="badge">{{ customer.id }}</span> {{ customer.name }}
+    <a routerLink="/detail/{{customer.id}}">
+      <span class="badge">{{customer.id}}</span> {{customer.name}}
+    </a>
+    <button type="button" 
+            class="delete" 
+            title="delete customer"
+            (click)="delete(customer)">
+      x
+    </button>
   </li>
 </ul>
-
-<!-- <app-customer-detail [customer]="selectedCustomer"></app-customer-detail> -->

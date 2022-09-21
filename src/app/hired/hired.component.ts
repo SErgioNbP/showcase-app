@@ -18,8 +18,8 @@ export class HiredComponent implements OnInit {
   }
 
   getCustomers(): void {
-    this.customerService.getCustomers()
-      .subscribe(customers => this.customers = customers.slice(1, 5));
+    this.customerService?.getCustomers()
+      ?.subscribe(customers => this.customers = customers.slice(1, 5));
   }
 
 }
