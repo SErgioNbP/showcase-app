@@ -19,7 +19,16 @@ export class HiredComponent implements OnInit {
 
   getCustomers(): void {
     this.customerService?.getCustomers()
-      ?.subscribe(customers => this.customers = customers.slice(1, 5));
+      ?.subscribe(customers => this.customers = customers);
   }
 
+  isBirthday(customer: Customer) {
+    const birthDayMonth = new Date(customer.birthDate).getMonth();
+    const month = new Date().getMonth();
+
+    if(birthDayMonth === month) {
+      return true;
+    }
+    return false;
+  }
 }

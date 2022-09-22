@@ -1,12 +1,16 @@
 <div *ngIf="customer">
-  <h2>{{ customer.name | uppercase }} Details</h2>
-  <div><span>id: </span>{{ customer.id }}</div>
-  <div>
-    <label for="customer-name">Customer name: </label>
-    <input id="customer-name" 
-           [(ngModel)]="customer.name" 
-           placeholder="Customer name">
+  <div class="customer">
+    <h2>{{ customer.firstName | uppercase }} {{ customer.lastName | uppercase }} Details</h2>
+    <div class="details">
+      <div><span>First Name: </span>{{ customer.firstName }}</div>
+      <div><span>Last Name: </span>{{ customer.lastName }}</div>
+      <div><span>Birthday: </span>{{ customer.birthDate }}</div>
+      <div><span>Email: </span>{{ customer.email }}</div>
+    </div>
+    <button type="button" 
+            class="btn btn-primary" 
+            (click)="goBack()">
+      go back
+    </button>
   </div>
-  <button type="button" (click)="goBack()">go back</button>
-  <button type="button" (click)="save()">save</button>
 </div>

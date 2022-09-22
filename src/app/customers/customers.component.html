@@ -1,26 +1,17 @@
-<h2>Customers Showcase</h2>
-
-<div>
-  <label for="new-customer">Customer name: </label>
-  <input id="new-customer" #customerName />
-
-  <button type="button" 
-          class="add-button" 
-          (click)="add(customerName.value); customerName.value=''">
-    Add customer
-  </button>
-</div>
-
 <ul class="customers">
   <li *ngFor="let customer of customers">
     <a routerLink="/detail/{{customer.id}}">
-      <span class="badge">{{customer.id}}</span> {{customer.name}}
+      <img src="{{ customer.avatar }}" class="avatar"/> 
+      {{customer.firstName}} {{customer.lastName}} 
+      <span *ngIf="isBirthday(customer)" class="material-icons icon">
+        cake
+      </span>
     </a>
     <button type="button" 
             class="delete" 
             title="delete customer"
             (click)="delete(customer)">
-      x
+      <i class="fa fa-trash" style="font-size:20px;"></i>
     </button>
   </li>
 </ul>

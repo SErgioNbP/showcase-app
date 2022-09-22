@@ -1,8 +1,19 @@
-<div *ngIf="messageService.messages.length">
-
-    <h2>Messages</h2>
-    <button type="button" class="clear"
-            (click)="messageService.clear()">Clear messages</button>
-    <div *ngFor='let message of messageService.messages'> {{message}} </div>
-  
-  </div>
+<div *ngIf="messageService.messages.length" class="container messages">
+        <div class="center margin-left">
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#messages" aria-expanded="false" aria-controls="messages">
+                        Messages
+                </button>
+        </div>
+        <div class="collapse margin-left" id="messages">
+                <div class="card card-body">
+                        <div *ngFor='let message of messageService.messages' class="alert alert-light message" role="alert">
+                                {{ message }}
+                        </div>
+                        <div class="center">
+                                <button type="button" class="btn btn-warning" (click)="messageService.clear()">
+                                        Clear messages
+                                </button>
+                        </div>
+                </div>
+        </div> 
+</div>

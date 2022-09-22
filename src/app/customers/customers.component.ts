@@ -23,17 +23,18 @@ export class CustomersComponent implements OnInit {
       ?.subscribe(customers => this.customers = customers);
   }
 
-  add(name: string): void {
-    name = name.trim();
-    if (!name) { return; }
-    this.CustomerService.addCustomer({ name } as Customer)
-      .subscribe(customer => {
-        this.customers.push(customer);
-      });
-  }
-
   delete(customer: Customer): void {
     this.customers = this.customers.filter(h => h !== customer);
     this.CustomerService.deleteCustomer(customer.id).subscribe();
+  }
+
+  isBirthday(customer: Customer) {
+    const birthDayMonth = new Date(customer.birthDate).getMonth();
+    const month = new Date().getMonth();
+
+    if(birthDayMonth === month) {
+      return true;
+    }
+    return false;
   }
 }

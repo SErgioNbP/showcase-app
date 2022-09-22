@@ -1,4 +1,9 @@
 export interface Customer {
-    id: number;
-    name: string;
+    firstName: string,
+    lastName: string,
+    birthDate: string,
+    email: string,
+    avatar: string,
+    hasContract: boolean,
+    id: number,
 }

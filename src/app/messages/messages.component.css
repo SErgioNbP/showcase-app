@@ -1,18 +1,22 @@
 h2 {
-    color: #A80000;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: lighter;
-  }
-  
-  .clear {
-    color: #333;
-    background-color: #eee;
-    margin-bottom: 12px;
-    padding: 1rem;
-    border-radius: 4px;
-    font-size: 1rem;
-  }
-  .clear:hover {
-    color: white;
-    background-color: #42545C;
-  }
+  color: #A80000;
+  text-align: center;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.messages {
+  padding: 50px;
+}
+
+.message {
+  text-align: center;
+}
+
+.margin-left {
+  margin-left: -27px;
+}

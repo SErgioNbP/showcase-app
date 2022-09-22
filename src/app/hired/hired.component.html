@@ -1,7 +1,16 @@
-<h2>Hired Customers</h2>
-<div class="customers-menu">
-  <a *ngFor="let customer of customers" 
-     routerLink="/detail/{{ customer.id }}">
-    {{ customer.name }}
-  </a>
+<div class="container">
+  <h2>Hired Customers</h2>
+  <ul class="customers">
+    <li *ngFor="let customer of customers">
+      <div *ngIf="customer.hasContract">
+        <a routerLink="/detail/{{customer.id}}">
+          <img src="{{ customer.avatar }}" class="avatar" /> 
+            {{customer.firstName}} {{customer.lastName}} 
+            <span *ngIf="isBirthday(customer)" class="material-icons icon">
+              cake
+            </span>
+          </a>
+      </div>
+    </li>
+  </ul>
 </div>
